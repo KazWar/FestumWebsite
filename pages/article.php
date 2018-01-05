@@ -1,24 +1,42 @@
 <?php require('navigation/header.php') ?>
+  
+    <?php
+    
+    $articleCode = $_GET['articleCode'];
+            
+    $resultArticle = mysqli_query($con,"SELECT * FROM articles WHERE articleID=$articleCode");
+    
+    while($row = mysqli_fetch_assoc($resultArticle)) {
+                        $articleTitle = htmlspecialchars($row['title']);
+                        $articleDescription = $row['content'];
+                        $articleDate = htmlspecialchars($row['articleDate']);
+        
+    echo"<div class='container'>
+            <div class=' bg-faded p-4 my-3'>
+              <h2 class='text-center text-lg text-uppercase my-0'>$articleTitle</h2>
+              <h3 class='text-center text-lg text-uppercase my-0'>$articleDate</h3>
+              <hr class='divider'>
+              $articleDescription
+             </div>";}
 
-<div class="container">
-  <div class=" bg-faded p-4 my-4">
-    <h2 class="text-center text-lg text-uppercase my-0">A <strong>MUST</strong> visit event!</h2>
-    <hr class="divider">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore voluptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur perspiciatis reprehenderit illo et vitae iste provident debitis quos corporis saepe deserunt ad, officia, minima natus molestias assumenda nisi velit?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit totam libero expedita magni est delectus pariatur aut, aperiam eveniet velit cum possimus, autem voluptas. Eum qui ut quasi voluptate blanditiis?</p>
-  </div>
-    
-  <div class=" bg-faded p-4 my-4">
-    <h2 class="text-center text-lg text-uppercase my-0">Kazik Waraksa</h2>
-    <hr class="divider">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam soluta dolore vo
-        luptatem, deleniti dignissimos excepturi veritatis cum hic sunt perferendis ipsum perspiciatis nam officiis sequi atque enim ut! Velit, consectetur.</p>
-  </div>
-   
-  <div class="col-md-2 offset-5 bg-faded p-1 my-3 rounded">
-      <button id="addCommentButton" type="button" class="btn btn-outline-light"> + </button>
-  </div>
-</div>  
-    
+    $resultComments = mysqli_query($con,"SELECT content,full_name from articlecomments 
+                                        INNER JOIN persons
+                                        ON articlecomments.userID = persons.personID
+                                        where articleID=$articleCode;");
+
+    while($row = mysqli_fetch_array($resultComments)) {
+        $username = htmlspecialchars($row['full_name']);
+        $userComment = $row['content'];
+        
+    echo "<div class=' bg-faded p-4 my-3'>
+              <h2 class='text-center text-lg text-uppercase my-0'>$username</h2>
+              <hr class='divider'>
+              <p>$userComment</p>
+            </div>
+          </div>";}?>
+
+        <div>
+            <button type='button' class='btn btn-outline-light col-md-2 offset-5 bg-faded p-1 mb-3 rounded'> + </button>
+        </div>
+
 <?php require('navigation/footer.php') ?>

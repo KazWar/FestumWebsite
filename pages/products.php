@@ -2,13 +2,36 @@
 
 <link href="/css/shop-homepage.css" rel="stylesheet" type="text/css"/>
 
-<div class="container" style="margin-top: 40px;">
+
+<div class="col-md-2 bg-faded p-4 my-4" style="position: absolute; margin-left: 15px;">
+    <p class="lead">Categories</p>
+    <div class="list-group">
+        <?php
+            $resultItemTypes = mysqli_query($con,"SELECT * FROM itemtypes");
+
+             while($row = mysqli_fetch_array($resultItemTypes)) {
+            $productType = htmlspecialchars($row['typeName']);
+            $productCode = htmlspecialchars($row['recordID']);
+
+            echo "<a href='products.php?type=$productCode' class='list-group-item'>". ucfirst($productType) . "</a>";}
+        ?>
+    </div>
+</div>
+
+<div class="container" style="margin-right: 60px;">
   <div class="bg-faded p-4 my-4">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-11">
                 <div class='row product-list'>
                     <?php
+                    $result = mysqli_query($con,"SELECT * FROM webshopProducts");
+                    $categoryChoice = filter_input(INPUT_GET, 'type');
+                    
+                    if (isset($categoryChoice)) {
+                        $result = mysqli_query($con,"SELECT * FROM webshopProducts WHERE type = '$categoryChoice'");
+                    }else{
                         $result = mysqli_query($con,"SELECT * FROM webshopProducts");
+                    }
                     
                     while($row = mysqli_fetch_array($result)) {
                         $productCode = htmlspecialchars($row['productID']);
