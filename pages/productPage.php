@@ -1,14 +1,15 @@
-<?php require 'header.php'; 
+<?php require('/navigation/header.php')?>
 
-$code = htmlspecialchars($_GET["productCode"]);
-$price = filter_input(INPUT_GET, 'price');
+<?php
+$productID = htmlspecialchars($_GET["productID"]);
 
-$result = mysqli_query($con,"SELECT * FROM products WHERE code = $code");
+$result = mysqli_query($con,"SELECT * FROM webshopproducts WHERE productID = '$productID'");
                   
-    foreach ($result as $row) {
-        $productCode = htmlspecialchars($row['code']);
+    foreach ($result as $row)    
+    {
+        $productID = htmlspecialchars($row['productID']);
         $productName = htmlspecialchars($row['name']);
-        $productDescription = ($row['description']);
+        $productDescription = $row['description'];
         $productPrice = htmlspecialchars($row['price']);
     }
 
@@ -16,67 +17,41 @@ $result = mysqli_query($con,"SELECT * FROM products WHERE code = $code");
  <link href="../css/shop-item.css" rel="stylesheet" type="text/css"/>
  
  <div class="container">
+     <div class="bg-faded p-3 my-3">
         <div class="row">
             <div class="col-md-9">
                 <div class="thumbnail">                               
-                    <img id="productImage" class="img-responsive" src="<?php echo 'productImages/' .$productCode .'.jpg'?>" alt="<?php echo $productName ?>">       
-                    <div class="caption-full">                
+                    <img id="productImage" class="img-responsive" src="<?php echo 'productImages/' .$productID .'.jpg'?>" alt="<?php echo $productName ?>">       
                     <hr style="width:80%; ">
+                    <div class="caption-full"> 
                         <table style="width: 100%">
-                        <tr>
-                            <td>
-                                <h4><?php echo $productName ?></h4>
-                            </td>
-                            <td class="pull-right">
-                                <h4 id="price" >&#8364; <?php 
-                                if (isset($price)) {
-                                    echo $price;
-                                    } else {
-                                    echo $productPrice;}?> p.p</h4> 
-                            </td>
-                        </tr>
-                    </table>
-                    <div id="">
-                        <p><?php echo "$productDescription";?></p>  
-                    </div>
-                    </div>  <hr style="width:80%; ">
-                    <div class="text-right productButtons">
-                        <a class="btn btn-info" href="addToCart.php?productCode=<?php echo $productCode?>">
-                            <span translate="addtocart">Add to wishlist</span>
-                        </a>
-                        <a class="btn btn-warning" href="addToCart.php?productCode=<?php echo $productCode?>">
-                            <span translate="addtocart">Alert when available</span>
-                        </a>
-                        <a class="btn btn-success" href="addToCart.php?productCode=<?php echo $productCode?>">
+                            <tr>
+                                <td>
+                                    <h4><?php echo $productName ?></h4>
+                                </td>
+                                <td class="pull-right">
+                                    <h4 id="price" >&#8364; <?php echo $productPrice ?> p.p</h4> 
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="">
+                            <p><?php echo "$productDescription";?></p>  
+                        </div>
+                    </div>  
+                    
+                    <hr style="width:80%; ">
+                    <div class="text-right btn-toolbar mb-3" role="toolbar">
+                        <a href="addToCart.php?productID=<?php echo $productID?>&amount=getAmount()" class="btn btn-outline-success">
                             <span translate="addtocart">Add to cart</span>
                         </a>
-                    </div>
-                </div>
-                
-                <div class="well">
-                    <div class="text-right">
-                        <a class="btn btn-success">
-                            <span translate="createreview">Laat een beoordeling achter</span>
-                        </a>
-                    </div>
-
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">15 days ago</span>
-                            <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
+                        <div class="input-group">
+                            <input type="text"  id="inputAmount">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
-  <?php require 'footer.php'; ?>
+<?php require('/navigation/footer.php') ?>

@@ -1,5 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
 <?php require('mysql/connectConfig.php'); 
             session_start();
+            if (isset($_SESSION["loggedIn"]) == true && isset($_COOKIE["FestumCookie"]) == false) {
+                setcookie("FestumCookie", $_SESSION["userID"], time()+432000);
+                //Cookie is set for 5 days.
+            }
 ?>
 
 <html lang="en">
@@ -59,10 +66,11 @@
           <ul class="navbar-nav mx-auto">
               <div class="btn-group">
                     <?php if(isset($_SESSION["loggedIn"])) {
-                        echo "<button type='button' onclick='navigate()' class='btn btn-default'>log out</button>";
+                        echo "<button type='button' onclick='navigate()' class='btn btn-outline-secondary'>log out</button>";
                     } else {
-                        echo '<button type="button"  onclick="openNav()" class="btn btn-default">Log In</button>';
+                        echo '<button type="button"  onclick="openNav()" class="btn btn-outline-secondary">Log In</button>';
                     }?>
+                  <a href="#" name="cartButton" class="btn btn-outline-secondary">Cart</a>
               </div>
            </ul>
         </div>

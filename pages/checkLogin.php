@@ -23,9 +23,11 @@ if($count == 1){
         $name = htmlspecialchars($row['first_name']);
         $middlename = htmlspecialchars($row['mid_name']);
         $surname = htmlspecialchars($row['last_name']);
+        $personID = htmlspecialchars($row['personID']);
     }
     
     $_SESSION["welcome"] = $name . ' ' . $middlename . ' ' . $surname;
+    $_SESSION["userID"] = $personID;
     $_SESSION["loggedIn"] = TRUE;
     
     header("location:home.php");

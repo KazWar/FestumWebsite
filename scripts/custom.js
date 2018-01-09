@@ -9,8 +9,6 @@ $(document).ready(function () {
     containers.on('mouseout', function () {
         $(this).css('height', '150px');
     });
-   
-    $(".product-description").dotdotdot();
 });
 
 function openNav() {
@@ -25,4 +23,8 @@ function closeNav() {
 
 function navigate(){
     location.href="logout.php";
+}
+
+function getAmount(){
+    return document.getElementById("inputAmount").value;
 }

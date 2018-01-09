@@ -34,7 +34,7 @@
                     }
                     
                     while($row = mysqli_fetch_array($result)) {
-                        $productCode = htmlspecialchars($row['productID']);
+                        $productID = htmlspecialchars($row['productID']);
                         $productName = htmlspecialchars($row['name']);
                         $productDescription = $row['description'];
                         $productPrice = htmlspecialchars($row['price']);
@@ -42,21 +42,21 @@
                         echo      "<div class='col-sm-4 col-lg-4 col-md-4'>
                                     <div class='thumbnail'>
                                         <div class='thumbnail-container'>";
-                                        if (file_exists(getcwd() . '/productImages/' . $productCode .'.jpg')) {
-                                            echo "<a href='productPage.php?productCode=$productCode'>
-                                                    <img class='thumbnail-image' src='productImages/". $productCode .".jpg' alt='$productName'>
+                                        if (file_exists(getcwd() . '/productImages/' . $productID .'.jpg')) {
+                                            echo "<a href='productPage.php?productID=$productID'>
+                                                    <img class='thumbnail-image' src='productImages/". $productID .".jpg' alt='$productName'>
                                                   </a></div>";
                                         } else {
-                                            echo "<a href='productPage.php?productCode=$productCode'>
+                                            echo "<a href='productPage.php?productID=$productID'>
                                                     <img class='thumbnail-image' src='productImages/noproduct.jpg' alt='$productName'>
                                                   </a></div>";
                                         }
 
                         echo      "<div class='caption'>
                                         <h4 class='pull-right'>&#8364; $productPrice</h4>
-                                        <h4><a class='product-name' href='productPage.php?productCode=$productCode'> $productName</a></h4>
+                                        <h4><a class='product-name' href='productPage.php?productID=$productID'> $productName</a></h4>
                                        <div class='product-description thumbnail-text'>$productDescription</div>
-                                           <a href='productPage.php?productCode=$productCode' class='readmore'>Read more &raquo;</a>
+                                           <a href='productPage.php?productID=$productID' class='readmore'>Read more &raquo;</a>
                                     </div>
                                 </div>
                             </div>";}
