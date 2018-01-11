@@ -3,7 +3,7 @@
 
 $chosenProductID = $_GET["productID"];
 $productID = $chosenProductID;
-$productAmount  = $_GET["inputAmount"];
+//$productAmount  = $_GET["inputAmount"];
 $userID = $_SESSION["userID"];
 
 
@@ -14,7 +14,7 @@ if ($con->connect_error) {
 } 
 
 $sql = "INSERT INTO shoppingcart (personID, productID, Amount)
-VALUES ($userID, $productID, $productAmount)";
+VALUES ($userID, $productID, 1)";
 
 if ($con->query($sql) === TRUE) {
     echo "New record created successfully";
