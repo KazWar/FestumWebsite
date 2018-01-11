@@ -1,4 +1,14 @@
-<?php require('navigation/header.php') ?>
+<?php 
+$PageTitle = "Camping Site Selection";
+
+function ScriptsAndStyles(){ ?>
+    <link href="../../css/webshopcart.css" rel="stylesheet" type="text/css"/>
+    <script src="../campingsite/campingsite.js"></script>    
+    <script src="cart.js"></script>    
+<?php }
+
+include_once('../components/header.php');?>
+<!------------------------------------------------------------------------------------ -->
 
 <div class="container bg-faded my-3">
     <table id="cart" class="table table-hover table-condensed">
@@ -80,10 +90,12 @@
                 <td><a href='products.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Shopping</a></td>
                 <td colspan='2' class='hidden-xs'></td>
                 <td class='hidden-xs text-center'></td>
-                <td><a href='#' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a></td>
+                <td><a href='confirmDeliveryPage.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a></td>
             </tr>
         </tfoot>
     </table>
 </div>";?>
 
-<?php require('navigation/footer.php') ?>
+
+<!------------------------------------------------------------------------------------ -->
+<?php include_once('../components/footer.php');?>

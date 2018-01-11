@@ -1,7 +1,6 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html>
 
-<?php require('mysql/connectConfig.php'); 
+<?php require('../../api/db.php'); 
             session_start();
             if (isset($_SESSION["loggedIn"]) == true && isset($_COOKIE["FestumCookie"]) == false) {
                 setcookie("FestumCookie", $_SESSION["userID"], time()+432000);
@@ -16,27 +15,32 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Festum Events</title>
+    <title>Festum Events <?= isset($PageTitle) ? "- " . $PageTitle : "" ?> </title>
     
     <!-- Bootstrap core JavaScript -->
-    <script src="../scripts/jquery.min.js"></script>
-    <script src="../scripts/bootstrap.bundle.min.js"></script>
-    <script src="../scripts/custom.js"></script>
-    <script src="../scripts/cookie.min.js"></script>
-    <script src="../scripts/jquery.imagemapster.min.js" type="text/javascript"></script>
+    <script src="../../scripts/jquery.min.js"></script>
+    <script src="../../scripts/bootstrap.bundle.min.js"></script>
+    <script src="../../scripts/custom.js"></script>
+    <script src="../../scripts/cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.9.0/validator.min.js"> </script>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="../css/business-casual.css" rel="stylesheet">
-    <link href="../css/custom.css" rel="stylesheet" type="text/css"/>  
+    <link href="../../css/business-casual.css" rel="stylesheet">
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css"/>  
+    
+    <!-- Additional scripts and styles here -->
+    <?php if (function_exists('ScriptsAndStyles')){
+      ScriptsAndStyles();
+    }?>
+    
   </head>
 
   <body>
@@ -79,7 +83,7 @@
                     } else {
                         echo '<button type="button"  onclick="openNav()" class="btn btn-outline-secondary">Log In</button>';
                     }?>
-                  <a href="webshopCart.php" name="cartButton" class="btn btn-outline-secondary">Cart</a>
+                  <a href="../cart/cart.php" name="cartButton" class="btn btn-outline-secondary">Cart</a>
               </div>
            </ul>
         </div>

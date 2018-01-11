@@ -11,12 +11,13 @@ $articles = array(
     array("recordID" => 4, "articleID" => 23, "title" => "Life is good!", "content" => "Or not?", "date" => "2017-01-19 11:22:22")
 );
 */
+$personID = $_GET['personID'];
 $cartProducts = array();
 $result = mysqli_query($con,"
         SELECT amount,name,price,shoppingcart.productID as productID FROM shoppingcart
         INNER JOIN webshopproducts
         ON shoppingcart.productID = webshopproducts.productID
-        WHERE personID = $userID;");
+        WHERE personID = $personID");
 while($row = mysqli_fetch_array($result)) {
      $cartProduct = array(
          "productID" => htmlspecialchars($row['productID']),

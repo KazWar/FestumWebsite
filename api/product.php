@@ -12,15 +12,16 @@ $articles = array(
     array("recordID" => 4, "articleID" => 23, "title" => "Life is good!", "content" => "Or not?", "date" => "2017-01-19 11:22:22")
 );
 */
-
-$result = mysqli_query($con,"SELECT * FROM webshopproducts WHERE WHERE productID = '$productID'");
+$productID = $_GET['productID'];
+$result = mysqli_query($con,"SELECT * FROM webshopproducts WHERE productID = '$productID'");
 while($row = mysqli_fetch_array($result)) {
      $product = array(
          "productID" => $row['productID'],
          "name" => htmlspecialchars($row['name']),
          "description" => htmlspecialchars($row['description']),
          "price" => $row['price'],
-         "type" => $row['type']
+         "type" => $row['type'],
+         "imagename" => $row["imagename"]
      );
 }
 

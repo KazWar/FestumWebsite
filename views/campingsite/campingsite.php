@@ -1,14 +1,15 @@
-<html>
-    <head>
-        <script src="../scripts/jquery.imagemapster.min.js" type="text/javascript"></script>
-        <script>
-            $('#image').mapster({
-                fillColor: 'ff0000',
-                fillOpacity: 0.3});
-        </script>
-    </head>
-    <body>
-        <img id="image" src="../img/Campingsite.png" usemap="#image-map">
+<?php 
+$PageTitle = "Camping Site Selection";
+
+function ScriptsAndStyles(){ ?>
+    <script src="jquery.imagemapster.min.js" type="text/javascript"></script>
+    <script src="campingsite.js"></script>    
+<?php }
+
+include_once('../components/header.php');?>
+<!------------------------------------------------------------------------------------ -->
+
+        <img id="image" src="../../img/Campingsite.png" usemap="#image-map">
         <map name="image-map">
             <area target="" alt="1a" title="1a" href="" coords="218,247,246,238,236,209,208,218" shape="poly">
             <area target="" alt="1b" title="1b" href="" coords="218,248,246,240,260,288,230,298" shape="poly">
@@ -26,7 +27,6 @@
             <area target="" alt="1d" title="1d" href="" coords="555,232,620,214,603,178,542,199" shape="poly">
             <area target="" alt="2d" title="2d" href="" coords="532,169,588,145,603,176,541,199" shape="poly">
         </map>
-    </body>
-</html>
 
-
+<!------------------------------------------------------------------------------------ -->
+<?php include_once('../components/footer.php');?>

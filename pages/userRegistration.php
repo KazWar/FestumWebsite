@@ -12,8 +12,8 @@
           <div class="panel-body">
               <div id="panelRegistrationContainer" class="container">
                 <div class="row">
-                    <form role="form" action="insertAccountData.php" method="post" data-toggle="validator" autocomplete="off">
-                        <div class="col-lg-4">
+                    <form id="registrationForm" role="form" action="insertAccountData.php" method="post" data-toggle="validator" autocomplete="off">
+                        <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="inputName has-feedback">Name</label>
                                     <div class="input-group">
@@ -73,5 +73,7 @@
         </div>
     </div>
 </div>
+
+<script> $('#registrationForm').validator(); </script>
 
 <?php require('navigation/footer.php') ?>

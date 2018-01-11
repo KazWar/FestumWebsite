@@ -4,24 +4,23 @@
 
 header('Content-Type: application/json');
 
-/* Fake articles 
-$articles = array(
-    array("recordID" => 1, "articleID" => 2, "title" => "Yo!", "content" => "Wasup?", "date" => "2017-01-19 11:22:22"),
-    array("recordID" => 2, "articleID" => 21, "title" => "Hi!", "content" => "What is your favourite color?", "date" => "2017-01-19 11:22:22"),
-    array("recordID" => 3, "articleID" => 22, "title" => "How are you?!", "content" => "Good?", "date" => "2017-01-19 11:22:22"),
-    array("recordID" => 4, "articleID" => 23, "title" => "Life is good!", "content" => "Or not?", "date" => "2017-01-19 11:22:22")
-);
-*/
-
 $products = array();
-$result = mysqli_query($con,"SELECT * FROM webshopproducts");
+if (isset($_GET["type"])) {
+    $productType = $_GET["type"];
+    $result = mysqli_query($con, "SELECT * FROM webshopproducts where type = $productType");
+}
+else {
+    $result = mysqli_query($con,"SELECT * FROM webshopproducts");    
+}
+
 while($row = mysqli_fetch_array($result)) {
      $product = array(
          "productID" => $row['productID'],
          "name" => htmlspecialchars($row['name']),
          "description" => $row['description'],
          "price" => $row['price'],
-         "type" => $row['type']
+         "type" => $row['type'],
+         "imagename" => $row["imagename"]
      );
      array_push($products, $product);
 }
