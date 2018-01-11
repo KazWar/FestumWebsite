@@ -28,3 +28,5 @@ function navigate(){
 function getAmount(){
     return document.getElementById("inputAmount").value;
 }
+
+function updateProduct(){}

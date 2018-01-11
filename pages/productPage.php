@@ -34,16 +34,25 @@ $result = mysqli_query($con,"SELECT * FROM webshopproducts WHERE productID = '$p
                                 </td>
                             </tr>
                         </table>
-                        <div id="">
-                            <p><?php echo "$productDescription";?></p>  
+                        <div>
+                            <p><?php echo $productDescription?></p>  
                         </div>
                     </div>  
                     
                     <hr style="width:80%; ">
                     <div class="text-right btn-toolbar mb-3" role="toolbar">
-                        <a href="addToCart.php?productID=<?php echo $productID?>&amount=getAmount()" class="btn btn-outline-success">
+                        <?php if (isset($_SESSION['userID']) == false) {
+                            echo '<a href="addToCart.php?productID=<?php echo $productID?>" class="btn btn-outline-success disabled" aria-disabled="True"
+                                data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                             <span translate="addtocart">Add to cart</span>
-                        </a>
+                        </a>';
+                            
+                        } else {
+                            echo '<a href="addToCart.php?productID=<?php echo $productID?>" class="btn btn-outline-success ">
+                                    <span translate="addtocart">Add to cart</span>
+                                </a>';}
+                        ?>
+                        
                         <div class="input-group">
                             <input type="text"  id="inputAmount">
                         </div>
@@ -53,5 +62,15 @@ $result = mysqli_query($con,"SELECT * FROM webshopproducts WHERE productID = '$p
         </div>
     </div>
 </div>
+ 
+ <script src="popper.min.js">
+     
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip(),{
+  trigger:"hover"};
+});
+
+
+ </script>
 
 <?php require('/navigation/footer.php') ?>

@@ -1,0 +1,30 @@
+<?php require('db.php') ?>
+
+<?php
+header('Content-Type: application/json');
+
+/* Fake articles 
+$articles = array(
+    array("recordID" => 1, "articleID" => 2, "title" => "Yo!", "content" => "Wasup?", "date" => "2017-01-19 11:22:22"),
+    array("recordID" => 2, "articleID" => 21, "title" => "Hi!", "content" => "What is your favourite color?", "date" => "2017-01-19 11:22:22"),
+    array("recordID" => 3, "articleID" => 22, "title" => "How are you?!", "content" => "Good?", "date" => "2017-01-19 11:22:22"),
+    array("recordID" => 4, "articleID" => 23, "title" => "Life is good!", "content" => "Or not?", "date" => "2017-01-19 11:22:22")
+);
+*/
+$comments = array();
+$result = mysqli_query($con,"
+        SELECT content,full_name from articlecomments 
+        INNER JOIN persons
+        ON articlecomments.userID = persons.personID
+        where articleID=$articleCode;");
+while($row = mysqli_fetch_array($result)) {
+     $comment = array(
+         "full_name" => htmlspecialchars($row['full_name']),
+         "content" =>$row['content']
+     );
+     array_push($comments, $comment);
+}
+
+echo json_encode($comments);
+
+?>

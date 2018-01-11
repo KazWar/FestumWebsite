@@ -34,9 +34,8 @@
               <p>$userComment</p>
             </div>
           </div>";}?>
-
-        <div>
-            <button type='button' class='btn btn-outline-light col-md-2 offset-5 bg-faded p-1 mb-3 rounded'> + </button>
-        </div>
+    <div>
+        <button type='button' class='btn btn-outline-light col-md-2 offset-5 bg-faded p-1 mb-3 rounded'> + </button>
+    </div>
 
 <?php require('navigation/footer.php') ?>
