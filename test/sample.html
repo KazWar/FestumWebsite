@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Sample
+    </title>
+      <script src="sample.js"></script>
+      <script src="../scripts/custom.js"></script>
+      <link rel="stylesheet" href="sample.css">
+  </head>
+  <body>
+
+  <div id="ArticleList">
+  </div>
+
+  <div id="article-template" style="display: none;">
+      <div class='bg-faded p-3 my-4 text-center'>
+        <div class='card card-inverse'>
+          <div class='card-img-overlay bg-overlay'>
+            <h2 class='card-title text-shadow text-white text-uppercase mb-0'>${this.title}</h2>
+            <h4 class='text-shadow text-white'>${this.date.substring(0,10)}</h4>
+            <p class='lead card-text text-shadow text-white w-50 d-none d-lg-block'>${this.content}</p>
+            <a href='article.php?articleCode=$articleCode' class='btn btn-secondary'>Read More</a>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  </body>
+</html>
