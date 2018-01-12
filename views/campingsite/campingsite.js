@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-    if (typeof $('#image').mapster == 'function') {
+    if (typeof $('#image').mapster === 'function') {
         $('#image').mapster({
             highlight: true,
             fillColor: 'ff0000',

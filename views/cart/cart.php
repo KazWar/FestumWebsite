@@ -53,8 +53,8 @@ function ScriptsAndStyles(){ ?>
         $productAmount = $row['amount'];
         $productPrice = htmlspecialchars($row['price']);
         
-        $productPriceTotal = ($productAmount * $productPrice);
-        $orderPriceTotal = $orderPriceTotal + $productPriceTotal;
+        //$productPriceTotal = ($productAmount * $productPrice);
+        //$orderPriceTotal = $orderPriceTotal + $productPriceTotal;
 
     echo "<tbody>
             <tr>
@@ -71,7 +71,7 @@ function ScriptsAndStyles(){ ?>
                 <td data-th='Quantity'>
                     <input id='productAmount' type='number' class='form-control text-center' value='$productAmount'>
                 </td>
-                <td data-th='Subtotal' class='text-center'>&#8364; $productPriceTotal</td>
+                <td data-th='Subtotal' class='text-center'>&#8364; productPriceTotal</td>
                 <td class='actions' data-th=''>
                     <button onclick='updateProduct()'class='btn btn-info btn-sm'><i class='fa fa-refresh'></i></button>
                     <button onclick='removeProduct()' class='btn btn-danger btn-sm'><i class='fa fa-trash-o'></i></button>								
@@ -83,7 +83,7 @@ function ScriptsAndStyles(){ ?>
         echo"
         <tfoot>
             <tr class='visible-xs'>
-                <td class='text-center'><strong>Total price &#8364;$orderPriceTotal</strong></td>
+                <td class='text-center'><strong>Total price &#8364;orderPriceTotal</strong></td>
             </tr>
             <tr>
                 <td><a href='products.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Shopping</a></td>

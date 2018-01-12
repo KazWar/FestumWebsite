@@ -79,7 +79,7 @@
                     } else {
                         echo '<button type="button"  onclick="openNav()" class="btn btn-outline-secondary">Log In</button>';
                     }?>
-                  <a href="webshopCart.php" name="cartButton" class="btn btn-outline-secondary">Cart</a>
+                  <a href="../cart.php" name="cartButton" class="btn btn-outline-secondary">Cart</a>
               </div>
            </ul>
         </div>

@@ -23,13 +23,18 @@ try {
     //Recipients
     $mail->setFrom('kazik@waraksa.net', 'Mailer');
     $mail->addAddress('kazikwaraksa@hotmail.com', 'Joe User');  
+    $file_to_attach = 'filename.png';
 
+    $mail->AddAttachment( $file_to_attach , 'qrCode.png' );        
     //Attachments
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Subject = 'Order Confirmation: #';
+    $mail->Body    = '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            . ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+            . ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            . ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();

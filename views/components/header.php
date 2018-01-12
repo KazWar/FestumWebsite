@@ -1,6 +1,6 @@
 <!doctype html>
 
-<?php require('../../api/db.php'); 
+<?php include('../../api/db.php'); 
             session_start();
             if (isset($_SESSION["loggedIn"]) == true && isset($_COOKIE["FestumCookie"]) == false) {
                 setcookie("FestumCookie", $_SESSION["userID"], time()+432000);
