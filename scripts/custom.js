@@ -52,18 +52,15 @@ function getQueryParameter(name, defaultValue) {
    The component can be specified as CSS selector or
    just a ready to use HTML element */
 function PopulateComponent(componentOrSelector, data) {
-    console.log('Populating component with data', data);
     let component = componentOrSelector;
     if (typeof componentOrSelector == "string")
         component = document.querySelector(componentOrSelector);
     if (component && data) {
         // Inject all properties from data as local variables,
         // so that string interpolation engine can pick them
-        /*
         for (let key of Object.keys(data)) {
             this[key] = data[key];
         }
-        */
 
         // Get component HTML inner content
         let content = component.innerHTML;
@@ -80,17 +77,38 @@ function PopulateComponent(componentOrSelector, data) {
 
 
 /* Creates HTML component from the specified template and data,
-   appends to the specified container */
-function AddComponent(properties, containerSelector, templateSelector, data) {
-    let component = undefined;
+   appends to the specified container. Properties contain the following:
+
+   {
+       tag: '',
+       template: '',
+       className: '',
+       ...
+       ...
+   }
+
+    tag         - specifies the HTML tag used for the newly created component
+    template    - HTML markup to use for the component, or alternatively selector
+                  to HTML element containing the markup to use
+    className   - CSS class to apply to the newly created component
+    ...         - other HTML attributes to add to the component
+*/
+function AddComponent(properties, containerOrSelector, data) {
     // Find container where component should be added
-    let container = containerSelector ? document.querySelector(containerSelector) : undefined;
-    // Find component template
-    let templateContainer = templateSelector ? document.querySelector(templateSelector) : undefined;
-    if (properties && properties.tag && container && templateContainer && data) {
+    let container = containerOrSelector;
+    if (typeof containerOrSelector == "string")
+        container = document.querySelector(containerOrSelector);
+
+        let component = undefined;
+    if (properties && properties.tag && properties.template && container && data) {
+        // Find component template, specified in properties as raw text or as element selector
+        let template = properties.template;
+        if (template.indexOf("<") == -1)
+            template = document.querySelector(properties.template).innerHTML;
+
         // Create component, inject the template into it
         component = document.createElement(properties.tag);
-        component.innerHTML = templateContainer.innerHTML;
+        component.innerHTML = template;
 
         // Set component properties and attributes
         for (let key of Object.keys(properties)) {
@@ -114,11 +132,11 @@ function AddComponent(properties, containerSelector, templateSelector, data) {
 
 /* Creates HTML components from the specified template and data collection,
    appends to the specified container */
-function AddComponents(properties, containerSelector, templateSelector, data) {
+function AddComponents(properties, containerOrSelector, data) {
     let components = [];
     if (data && data.length) {
         for (let item of data) {
-            let component = AddComponent(properties, containerSelector, templateSelector, item);
+            let component = AddComponent(properties, containerOrSelector, item);
             components.push(component);
         }
     }

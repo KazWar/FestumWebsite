@@ -18,10 +18,10 @@
       <div class='bg-faded p-3 my-4 text-center'>
         <div class='card card-inverse'>
           <div class='card-img-overlay bg-overlay'>
-            <h2 class='card-title text-shadow text-white text-uppercase mb-0'>${this.title}</h2>
-            <h4 class='text-shadow text-white'>${this.date.substring(0,10)}</h4>
-            <p class='lead card-text text-shadow text-white w-50 d-none d-lg-block'>${this.content}</p>
-            <a href='article.php?articleCode=$articleCode' class='btn btn-secondary'>Read More</a>
+            <h2 class='card-title text-shadow text-white text-uppercase mb-0'>${title}</h2>
+            <h4 class='text-shadow text-white'>${date.substring(0,10)}</h4>
+            <p class='lead card-text text-shadow text-white w-50 d-none d-lg-block'>${content}</p>
+            <a href='article.php?articleCode=${articleID}' class='btn btn-secondary'>Read More</a>
           </div>
         </div>
       </div>

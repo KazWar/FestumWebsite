@@ -21,7 +21,14 @@ function LoadArticles() {
 
 
 function DisplayArticles(articles) {
-    AddComponents({ tag: "div", className: "container" }, "#ArticleList", '#article-template', articles);
+    AddComponents(
+        {
+            tag: "div",
+            className: "container",
+            template: '#article-template'
+            //template: '<div>${title}</div>'
+        },
+        "#ArticleList", articles);
 }
 
 window.addEventListener("load", () => {
