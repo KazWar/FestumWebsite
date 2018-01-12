@@ -1,13 +1,12 @@
 <?php 
+include_once('../components/header.php');
 $PageTitle = "Camping Site Selection";
 
 function ScriptsAndStyles(){ ?>
     <link href="../../css/webshopcart.css" rel="stylesheet" type="text/css"/>
     <script src="../campingsite/campingsite.js"></script>    
     <script src="cart.js"></script>    
-<?php }
-
-include_once('../components/header.php');?>
+<?php }?>
 <!------------------------------------------------------------------------------------ -->
 
 <div class="container bg-faded my-3">

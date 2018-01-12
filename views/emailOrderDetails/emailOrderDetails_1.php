@@ -7,8 +7,14 @@
    <body>
       
       <?php
+         include_once 'phpqrcode.php';
+         include_once 'PHPmailer.php';
+        
+      
+         $orderID = 12345;
+      
          $to = "kazikwaraksa@hotmail.com";
-         $subject = "This is subject";
+         $subject = "Order confirmation: #$orderID";
          
          $message = "<b>This is HTML message.</b>";
          $message .= "<h1>This is headline.</h1>";
@@ -28,3 +34,4 @@
       
    </body>
 </html>
+
