@@ -35,16 +35,16 @@ include_once('../components/header.php');?>
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <div class="thumbnail-container" style="height: 150px;">
-                    <a href="productPage.php?productID=$productID">
-                        <img class="thumbnail-image" src="../../img/product/noimage.png" alt="$name">
+                    <a href="../product/product.php?productID=${productID}">
+                        <img class="thumbnail-image" src="../../img/product/${imagename || 'noimage.png'}" alt="$imagename">
                     </a>
                 </div>
                 <div class="caption">
-                    <h4 class="pull-right">€ $productPrice</h4>
+                    <h4 class="pull-right">€ ${price}</h4>
                     <h4>
-                        <a href="productPage.php?productID=$productID">$productName</a>
+                        <a href="../product/product.php?productID=${productID}">${name}</a>
                     </h4>
-                    <div class="product-description thumbnail-text">$productDescription</div>
+                    <div class="product-description thumbnail-text">${description}</div>
                 </div>
             </div>
         </div>

@@ -1,11 +1,11 @@
 
-        <div id="PopUpOverlay" onclick="closeNav()"></div>
+        <div id="PopUpOverlay" onclick="closeLoginForm()"></div>
         
         <div id="loginPopUp" class="containerPopUp">
             <div id="logInPopUpPadding">
                 <h1>User Log In</h1>
-                <a href="userRegistration.php">Don't have an account yet?</a><a href="#">Forgot Password?</a>
-                <form action="checkLogin.php" method="post">
+                <a href="../register/register.php">Don't have an account yet?</a><a href="#">Forgot Password?</a>
+                <form action="../../api/login.php" method="post">
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
                         <input  value="kazikwaraksa@hotmail.com" type="text" class="form-control" name="username" placeholder="Username" aria-describedby="basic-addon1" required>

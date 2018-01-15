@@ -13,19 +13,16 @@ if (typeof $ == "function") {
     });
 }
 
-function openNav() {
+function openLoginForm() {
     document.getElementById("PopUpOverlay").style.display = "block";
     document.getElementById("loginPopUp").style.display = "block";
 }
 
-function closeNav() {
+function closeLoginForm() {
     document.getElementById("PopUpOverlay").style.display = "none";
     document.getElementById("loginPopUp").style.display = "none";
 }
 
-function navigate(){
-    location.href="logout.php";
-}
 
 /* Replaces all occurrences of a string within another string */
 String.prototype.replaceAll = function(search, replacement) {
@@ -115,7 +112,7 @@ function AddComponent(properties, containerOrSelector, data) {
             if (key == "className") {
                 component.className = properties[key]
             }
-            else if (key != "tag") {
+            else if (key != "tag" && key != "template") {
                 component.setAttribute(key, properties[key]);
             }
         }

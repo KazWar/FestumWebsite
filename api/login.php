@@ -1,12 +1,4 @@
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-<?php
-require 'mysql/connectConfig.php';
+<?php require('db.php');
 
 $myusername= filter_input(INPUT_POST,'username');
 $mypassword= filter_input(INPUT_POST,'password');
@@ -16,6 +8,7 @@ $result=mysqli_query($con,$sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
 $count = mysqli_num_rows($result);
+
 if($count == 1){
     session_start();
     
@@ -33,20 +26,9 @@ if($count == 1){
     $_SESSION["userID"] = $personID;
     $_SESSION["loggedIn"] = TRUE;
     
-    header("location:home.php");
-} else { ?>
-    <!DOCTYPE html>
-        <html lang="en">
-            <body>
-                <div class="jumbotron" style="text-align:center;">
-                    <h1>Login failed</h1>
-                    Wrong username or password, please try again.
-                    <?php
-                        header( "Refresh:2; url=home.php");
-                    ?>
-                </div>
-            </body>
-        </html>
-<?php       
-    }
+    header("location:../views/home/home.php");
+} 
+else { 
+    header("location:../views/unauthorized/unauthorized.php");    
+}
 ?>

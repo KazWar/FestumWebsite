@@ -34,3 +34,7 @@ footer {
 #productImage {
     width: 50%;
 }
+
+.image-hidden {
+    display: none;
+}

@@ -56,35 +56,37 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="home.php">Home
+              <a class="nav-link text-uppercase text-expanded" href="../home/home.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="news.php">News</a>
+              <a class="nav-link text-uppercase text-expanded" href="../articles/articles.php">News</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="products.php">Web shop</a>
+              <a class="nav-link text-uppercase text-expanded" href="../products/products.php">Web shop</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="tickets.php">Tickets</a>
+              <a class="nav-link text-uppercase text-expanded" href="../tickets/tickets.php">Tickets</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="contact.php">Contact</a>
+              <a class="nav-link text-uppercase text-expanded" href="../contact/contact.php">Contact</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="about.php">About</a>
+              <a class="nav-link text-uppercase text-expanded" href="../about/about.php">About</a>
             </li>
           </ul>
           <ul class="navbar-nav mx-auto">
-              <div class="btn-group">
-                    <?php if(isset($_SESSION["loggedIn"])) {
-                        echo "<button type='button' onclick='navigate()' class='btn btn-outline-secondary'>log out</button>";
-                    } else {
-                        echo '<button type="button"  onclick="openNav()" class="btn btn-outline-secondary">Log In</button>';
-                    }?>
-                  <a href="../cart/cart.php" name="cartButton" class="btn btn-outline-secondary">Cart</a>
-              </div>
+            <?php if(isset($_SESSION["loggedIn"])) {
+                echo "<form action='../../api/logout.php' method='post'>";
+                echo "<div class='btn-group'>";
+                echo "<button type='submit' class='btn btn-outline-secondary'>Log out</button>";
+                echo "<a href='../cart/cart.php' name='cartButton' class='btn btn-outline-secondary'>Cart</a>";
+                echo "</div>";
+                echo "</form>";
+            } else {
+                echo '<button type="button" onclick="openLoginForm()" class="btn btn-outline-secondary">Log In</button>';
+            }?>
            </ul>
         </div>
       </div>

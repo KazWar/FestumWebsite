@@ -1,36 +1,18 @@
 function LoadArticles() {
-    fetch("../../api/articles.php")         // fetch HTTP response from the specified URL
+    fetch("../../api/articles.php", { credentials: 'include'}) // fetch HTTP response from the specified URL, pass session as well!
        .then(response => response.json())   // Parse the received response as JSON
        .then(articles => {                  // ... and do something with our articles
-            DisplayArticles(articles)
+                AddComponents(
+                   {
+                       tag: "div",
+                       className: "container",
+                       template: "#article-template"
+                   }, 
+                   "#ArticleList",
+                   articles)
        });
 }
 
-
-function DisplayArticles(articles) {
-    let container = document.querySelector("#ArticleList")
-    let template = document.querySelector('#article-template').innerHTML
-    if (articles) {
-        for (let article of articles) {
-            DisplayArticle(article, container, template)
-        }
-    }
-    document.querySelector('#article-template').innerHTML = ''
-}
-
-
-function DisplayArticle(article, container, template) {
-    if (article && container && template) {
-        template = template
-                    .replace('$articleTitle', article.title)
-                    .replace('$articleDate', article.date.substring(0,10))
-                    .replace('$articleDescription', article.content)
-        let item = document.createElement('div')
-        item.className = 'container'
-        item.innerHTML = template
-        container.appendChild(item)        
-    }
-}
 
 window.addEventListener("load", () => {
    LoadArticles()
