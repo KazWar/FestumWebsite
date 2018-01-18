@@ -17,21 +17,21 @@ include_once('../components/header.php');?>
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="d-block img-fluid w-100" src="../img/music.jpg" alt="">
+            <img class="d-block img-fluid w-100" src="../../img/music.jpg" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-shadow">Amazing music</h3>
             <p class="text-shadow">Hear the newest and most popular music of the year.</p>
           </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block img-fluid w-100" src="../img/organization.jpg" alt="">
+            <img class="d-block img-fluid w-100" src="../../img/organization.jpg" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-shadow">Great atmosphere</h3>
             <p class="text-shadow">Lorem Ipsum dolor sit amet.</p>
           </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block img-fluid w-100" src="../img/musician2.jpg" alt="">
+            <img class="d-block img-fluid w-100" src="../../img/musician2.jpg" alt="">
           <div class="carousel-caption d-none d-md-block">
             <h3 class="text-shadow">Popular artists</h3>
             <p class="text-shadow">Get to see and meet your most favorite musicians.</p>

@@ -43,7 +43,7 @@ include_once('../components/header.php');?>
       <strong>Form</strong>
     </h2>
     <hr class="divider">
-    <form>
+    <form action="" method="post">
       <div class="row">
         <div class="form-group col-lg-4">
           <label class="text-heading">Name</label>
@@ -55,6 +55,10 @@ include_once('../components/header.php');?>
         </div>
         <div class="form-group col-lg-4">
           <label class="text-heading">Phone Number</label>
+          <input type="tel" class="form-control">
+        </div>
+        <div class="form-group col-lg-12">
+          <label class="text-heading">Subject</label>
           <input type="tel" class="form-control">
         </div>
         <div class="clearfix"></div>

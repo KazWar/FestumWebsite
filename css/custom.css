@@ -109,3 +109,8 @@
     width: 100%;
     height: 40px;
 }
+
+/* Bug fix - forces country list in country picker to be displayed above the input fields */
+.country-list {
+    z-index: 9999 !important;
+}
