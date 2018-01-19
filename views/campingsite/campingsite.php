@@ -36,7 +36,7 @@ include_once('../components/header.php');?>
             </map>
         </div>
         <hr class="divider">
-        <form action="../checkout/checkout.php" method="get">
+        <form action="../delivery/delivery.php" method="get">
             Your selected campingsite is : <input id="selectedSite" value="No campingsite selected">
             <hr>
             <div class="input_fields_wrap">

@@ -10,7 +10,7 @@ include_once('../components/header.php');?>
 <!------------------------------------------------------------------------------------ -->
 
     
-<div class="col-md-2 bg-faded p-4 my-4">
+<div class="col-md-2 bg-faded p-4 my-4" style="position: absolute;">
     <p class="lead">Categories</p>
     <div class="list-group">
         <a href="products.php" class="list-group-item">All products</a>

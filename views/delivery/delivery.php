@@ -23,32 +23,32 @@ include_once('../components/header.php');?>
           <div class="panel-body">
               <div id="panelRegistrationContainer" class="container">
                 <div class="row">
-                    <form id="registrationForm" role="form" action="../../api/delivery.php" method="post" autocomplete="off">
+                    <form id="registrationForm" role="form" action="../checkout/checkout.php" method="post" autocomplete="off">
                         <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="inputCountry">Country</label>
                                     <div class="form-item" >
-                                        <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder="..." required>
+                                        <input type="text" class="form-control" name="inputCountry" id="inputCountry" placeholder="..." >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputCity">City</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="inputCity" id="inputCity" placeholder="..." required>
+                                        <input type="text" class="form-control" name="inputCity" id="inputCity" placeholder="..." >
                                         <span class="input-group-addon"><span class="glyphicon form-control-feedback" aria-hidden="true"></span>&nbsp;&nbsp;</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Address</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Streetname + nr" required>
+                                        <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Streetname + nr">
                                         <span class="input-group-addon"><span class="glyphicon form-control-feedback" aria-hidden="true"></span>&nbsp;&nbsp;</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPostalCode">Postal Code</label>
                                     <div class="input-group">
-                                        <input type="email" class="form-control" id="inputPostalCode" name="inputPostalCode" placeholder="1111AA" data-error="Invalid postcode" pattern="^[1-9][0-9]{3} ?(?!sa|sd|ss|SA|SD|SS)[A-Za-z]{2}$" required>
+                                        <input type="text" class="form-control" id="inputPostalCode" name="inputPostalCode" placeholder="1111AA" data-error="Invalid postcode" pattern="^[1-9][0-9]{3} ?(?!sa|sd|ss|SA|SD|SS)[A-Za-z]{2}$" >
                                         <span class="input-group-addon"><span class="glyphicon form-control-feedback" aria-hidden="true"></span>&nbsp;&nbsp;</span>
                                     </div>
                                 </div>
