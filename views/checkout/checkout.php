@@ -17,10 +17,10 @@ function ScriptsAndStyles(){ ?>
                 The total value of your order is ${total} EUR.
             </div>
         </div>
+        <button onclick="SubmitOrder()">
+            Submit order
+        </button>
     </div>
-    <button onclick="SubmitOrder()">
-        Submit order
-    </button>
 </div>
 
 <div id="mail" style="display:none">

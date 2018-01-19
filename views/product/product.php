@@ -48,7 +48,6 @@ include_once('../components/header.php');?>
                         <button 
                             onclick="AddToCart(${productID})"
                             class="btn btn-outline-success" aria-disabled="True"
-                            data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                             <span translate="addtocart">Add to cart</span>
                         </button>
                         <div class="input-group">

@@ -2,7 +2,7 @@
 $PageTitle = "Contact";
 
 function ScriptsAndStyles(){ ?>
-
+<script src="contact.js" type="text/javascript"></script>
 <?php }
 
 include_once('../components/header.php');?>
@@ -43,28 +43,28 @@ include_once('../components/header.php');?>
       <strong>Form</strong>
     </h2>
     <hr class="divider">
-    <form action="" method="post">
+    <form id="contactForm" action="MailContactForm()" method="post">
       <div class="row">
         <div class="form-group col-lg-4">
           <label class="text-heading">Name</label>
-          <input type="text" class="form-control">
+          <input id="name" type="text" class="form-control">
         </div>
         <div class="form-group col-lg-4">
           <label class="text-heading">Email Address</label>
-          <input type="email" class="form-control">
+          <input id="email" type="email" class="form-control">
         </div>
         <div class="form-group col-lg-4">
           <label class="text-heading">Phone Number</label>
-          <input type="tel" class="form-control">
+          <input id="phoneNumber" type="tel" class="form-control">
         </div>
         <div class="form-group col-lg-12">
           <label class="text-heading">Subject</label>
-          <input type="tel" class="form-control">
+          <input id="emailSubject" type="tel" class="form-control">
         </div>
         <div class="clearfix"></div>
         <div class="form-group col-lg-12">
           <label class="text-heading">Message</label>
-          <textarea class="form-control" rows="6"></textarea>
+          <textarea id="emailBody" class="form-control" rows="6"></textarea>
         </div>
         <div class="form-group col-lg-12">
           <button type="submit" class="btn btn-secondary">Submit</button>
@@ -73,5 +73,6 @@ include_once('../components/header.php');?>
     </form>
   </div>
 </div>
+
 
 <?php include_once('../components/footer.php');?>

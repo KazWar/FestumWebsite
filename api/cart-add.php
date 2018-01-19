@@ -19,7 +19,8 @@ if (isset($_SESSION["userID"])) {
         if ($con->connect_error) {
             die("Connection failed: " . $con->connect_error);
         } 
-
+       
+        
         $sql = "INSERT INTO shoppingcart (personID, productID, Amount)
         VALUES ($userID, $productID, $amount)";
 

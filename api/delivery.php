@@ -7,14 +7,17 @@ session_start();
 $userID = $_SESSION['userID'];
 
 try {
-    $name = mysqli_real_escape_string($con, $_POST["inputCountry"]);
-    $middlename  = mysqli_real_escape_string($con,$_POST["inputCity"]);
-    $surname = mysqli_real_escape_string($con, $_POST["inputAddress"]);
-    $email  = mysqli_real_escape_string($con, $_POST["inputPostalCode"]);
+    $country = mysqli_real_escape_string($con, $_POST["inputCountry"]);
+    $city  = mysqli_real_escape_string($con,$_POST["inputCity"]);
+    $street = mysqli_real_escape_string($con, $_POST["inputAddress"]);
+    $streetInfo = explode (" ", $street);
+    $streetname = $streetInfo[0];
+    $streetnr = $streetInfo[1];
+    $postalCode  = mysqli_real_escape_string($con, $_POST["inputPostalCode"]);
 
-    $stmt = $con->prepare("INSERT INTO persons (first_name, mid_name, last_name, email, password, telephoneNumber) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $con->prepare("INSERT INTO deliveryaddress (personID, country, city, streetname, streetnumber, postalCode) VALUES (?, ?, ?, ?, ?, ?)");
     if ($stmt) {
-        $stmt->bind_param("sssssi", $name, $middlename, $surname, $email, $password, $phonenumber);
+        $stmt->bind_param("isssis", $userID, $country, $city, $streetname, $streetnr, $postalCode);
     
         if ($stmt->execute()) {
             $registered = true;
@@ -29,11 +32,11 @@ $stmt->close();
 $con->close();
 
 if ($registered) {
-    header("location:../views/register/ok.php");
+    header("location:../views/checkout/checkout.php");
 }
 else 
 {
-    header("location:../views/register/failed.php");
+    header("location:../views/delivery/failed.php");
 }
 
 ?>

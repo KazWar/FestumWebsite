@@ -54,8 +54,11 @@ function AddToCart(productID) {
         .then(result => {
            if (result.ok) {
                console.log(`Product ${productID} added to cart`);
-           } 
-        });
+           }; 
+        })
+        .then(result => {
+          window.location = '../products/products.php';
+      });
 }
 
 

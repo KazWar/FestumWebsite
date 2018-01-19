@@ -61,12 +61,18 @@ function ScriptsAndStyles(){ ?>
         </tr>
         <tr class='visible-xs'>
             <td class='text-center'><strong>Total price &#8364;${total}</strong></td>
+            <td colspan='3' class='text-right' style="display:none" id="campingSelector">
+                <strong>Add camping reservation?</strong> 
+                <input class="form-check-input" type="checkbox" value="yes" id="cbCampingReservation">
+            </td>
         </tr>
         <tr>
             <td><a href='products.php' class='btn btn-warning'><i class='fa fa-angle-left'></i> Continue Shopping</a></td>
             <td colspan='2' class='hidden-xs'></td>
             <td class='hidden-xs text-center'></td>
-            <td><a href='../views/checkout/checkout.php' class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></a></td>
+            <td>
+                <button id="checkOutButton" onclick="checkOutSelection()" class='btn btn-success btn-block'>Checkout <i class='fa fa-angle-right'></i></button>
+            </td>
         </tr>
     </tfoot>
 </table>

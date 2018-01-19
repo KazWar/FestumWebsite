@@ -21,8 +21,14 @@ function LoadCart() {
                 },
                 "#CartTable", cart);
                 
-                // Reveal the cart
+                cart.hasTickets = cart.products.some(product => product.type === "ticket");
+                
+                // Reveal the cart                
                 document.querySelector("#Cart").style.display = "block";
+                // Reveal the camping selector if tickets in cart
+                if (cart.hasTickets) {
+                    document.querySelector("#campingSelector").style.display = "block";
+                }
             }
             else {
                 document.querySelector("#NoCart").style.display = "block";
@@ -63,6 +69,16 @@ function UpdateOrderLine(recordId) {
                 ReloadCart();
            } 
         });
+}
+
+function checkOutSelection() {
+    let selection = document.querySelector(`#cbCampingReservation`).checked;
+    if (selection === true) {
+          window.location = '../campingsite/campingsite.php';
+    } else {
+        
+          window.location = '../checkout/checkout.php';
+    }
 }
 
 window.addEventListener("load", () => {

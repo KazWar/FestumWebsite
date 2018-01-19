@@ -20,8 +20,7 @@ while($row = mysqli_fetch_array($result)) {
          "productID" => $row['productID'],
          "name" => htmlspecialchars($row['name']),
          "description" => $row['description'],
-         "price" => $row['price'],
-         "type" => $row['type']
+         "price" => $row['price']
      );
      array_push($tickets, $ticket);
 }
