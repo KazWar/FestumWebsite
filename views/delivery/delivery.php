@@ -23,7 +23,7 @@ include_once('../components/header.php');?>
           <div class="panel-body">
               <div id="panelRegistrationContainer" class="container">
                 <div class="row">
-                    <form id="registrationForm" role="form" action="../checkout/checkout.php" method="post" autocomplete="off">
+                    <form id="registrationForm" role="form" action="../../api/delivery.php" method="post" autocomplete="off">
                         <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="inputCountry">Country</label>

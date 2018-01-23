@@ -13,6 +13,7 @@ if (isset($_SESSION["userID"])) {
     $userID = $_SESSION["userID"];
     $productID = $_GET["productID"];
     $amount = isset($_GET["amount"]) ? $_GET["amount"] : 1;
+    $ownerID = isset($_GET["ownerID"]) ? $_GET["ownerID"] : $userID;
 
     if (isset($productID) && $amount > 0) {
         // Check connection
@@ -21,8 +22,8 @@ if (isset($_SESSION["userID"])) {
         } 
        
         
-        $sql = "INSERT INTO shoppingcart (personID, productID, Amount)
-        VALUES ($userID, $productID, $amount)";
+        $sql = "INSERT INTO shoppingcart (personID, ownerID, productID, Amount)
+        VALUES ($userID, $ownerID, $productID, $amount)";
 
         if ($con->query($sql) === TRUE) {
             $result["ok"] = true;

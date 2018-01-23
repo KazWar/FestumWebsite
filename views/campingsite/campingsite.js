@@ -1,4 +1,11 @@
-window.addEventListener('load', () => {
+let Spots = []
+
+window.addEventListener('load', async () => {
+    
+    // get camping sites occupancy from API
+    let response = await fetch('../../api/camping-spots.php')
+    Spots = await response.json()
+    
     if (typeof $('#image').mapster === 'function') {
         $('#image').mapster({
             highlight: true,
@@ -8,26 +15,38 @@ window.addEventListener('load', () => {
             stroke: true,
             strokeOpacity: 1,
             strokeWidth: 1,
-            fade: true}
-                
-        );              
+            fade: true
+        });              
     }
     
-    let areas = document.querySelectorAll('area');
-    for (let i=0; i<areas.length; i++) {
-        let area = areas[i];
-        area.addEventListener('click', () => {
-            selectCampingSite(area.getAttribute('title'));
+    let areaElements = document.querySelectorAll('area');
+    for (let i=0; i<areaElements.length; i++) {
+        let areaElement = areaElements[i];
+        areaElement.addEventListener('click', () => {
+            selectCampingSite(areaElement.getAttribute('title'));
         });
     }
     
-    
+
 });
 
 
-function selectCampingSite(name) {
-    sessionStorage.setItem('CampingSite', name);
-    document.querySelector('#selectedSite').value = name;
+function selectSpot(id) {
+    if (id) {
+        $(`area[alt='${id}']`).mapster('select');
+    }
+}
+
+
+function selectCampingSite(id) {
+    if (!Spots.some(spot => spot.campingSpotID == id && spot.isTaken)) {
+        sessionStorage.setItem('CampingSite', id);
+        document.querySelector('#selectedSite').value = id;
+    }
+    else {
+        console.log(`Spot ${id} is already taken`)
+    }
+
 }
 
 

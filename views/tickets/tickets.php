@@ -9,7 +9,7 @@ function ScriptsAndStyles(){ ?>
 include_once('../components/header.php');?>
 
 <div class="container" style="margin-top: 40px;">
-    <div class="row">
+    <!--<div class="row">-->
         <div class="col-md-12">
             <div class='row product-list'>
                 
@@ -22,18 +22,60 @@ include_once('../components/header.php');?>
     <div class='col-lg-12 bg-faded p-3 my-2'>
         <h2 class='text-center text-lg text-uppercase my-0'><strong>${name}</strong></h2>
         <hr class='divider'>
-        <div id="input-group" class="input-group pull-right">
-            <input type="text" id="amount${productID}" value="1">
-            <span class="input-group-btn">
-                <button style='width: 125px; height: 75px;' 
-                        class='btn btn-outline-dark  mr-4 d-none d-lg-block' 
-                        onclick="AddToCart(${productID})">Buy Ticket</button>
+            <span class="input-group-btn pull-right">
+                <button id="modal_trigger" onclick="openTicketForm('${name}', ${productID})" style='width: 125px; height: 75px;' 
+                        class='btn btn-outline-dark mr-4 d-none d-lg-block' >Buy Ticket</button>
             </span>
-        </div>
         <p>${description}</p>
         <p>Price: &euro; ${price}</p>
     </div>
 </div>
+        
+<div class="container">
+    <div id="ticketDialog" class="popupContainer">
+        <div class="user_login">
+            <h2>Ticket: ${ticketName}</h2>
+            <div class="checkbox">
+                <input name="isOtherOwner" type="checkbox"/>
+                <label for="isOtherOwner">This ticket is for someone else</label>
+            </div>
+
+            <div class="inputs">
+                <label>First Name</label>
+                <input name="firstName" type="text"/>
+                <br/>
+
+                <label>Last Name</label>
+                <input name="lastName" type="text"/>
+                <br/>
+
+                <label>Email</label>
+                <input name="email" type="email"/>
+                <br/>
+            </div>
+
+
+            <div class="action_btns">
+                <div class="one_half last">
+                    <button onclick="addToCart(${ticketID})" class="btn">
+                        Add ticket
+                    </button>
+                    <button onclick="closeTicketForm()" class="btn">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="ticketAddedDialog" class="popupContainer">
+        <div class="user_login">
+            <h2>Ticket has been added to cart</h2>
+        </div>
+    </div>
+</div>
+
+<div id="lean_overlay"></div>
 
 
 <?php include_once('../components/footer.php');?>

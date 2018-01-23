@@ -21,7 +21,7 @@ function LoadCart() {
                 },
                 "#CartTable", cart);
                 
-                cart.hasTickets = cart.products.some(product => product.type === "ticket");
+                cart.hasTickets = cart.products.some(product => product.type === "Ticket");
                 
                 // Reveal the cart                
                 document.querySelector("#Cart").style.display = "block";

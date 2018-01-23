@@ -36,6 +36,11 @@
     <link href="../../css/business-casual.css" rel="stylesheet">
     <link href="../../css/custom.css" rel="stylesheet" type="text/css"/>  
     
+    <!-- Indication for JavaScript code that user is logged in -->
+    <script>
+        let UserLoggedIn = <?php echo(isset($_SESSION["loggedIn"]) ? "true" : "false"); ?>;
+    </script>
+    
     <!-- Additional scripts and styles here -->
     <?php if (function_exists('ScriptsAndStyles')){
       ScriptsAndStyles();

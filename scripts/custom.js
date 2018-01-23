@@ -60,8 +60,13 @@ function PopulateComponent(componentOrSelector, data) {
         }
 
         // Get component HTML inner content
-        let content = component.innerHTML;
-
+        let content = component.getAttribute("template-content")
+        if (!content) {
+            // If component populated first time, store the original HTML for future uses
+            content = component.innerHTML;       
+            component.setAttribute("template-content", component.innerHTML)
+        }
+ 
         // Parse expressions in the content
         let parser = new Function("return `" + content + "`;");
         content = parser.call(data);

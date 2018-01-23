@@ -15,7 +15,11 @@ else {
     $personID = $_SESSION['userID'];
     $cartProducts = array();
     $query = mysqli_query($con,"
-            SELECT shoppingcart.recordID as recordID,amount,name,itemtypes.typeName as typename,price,shoppingcart.productID as productID FROM shoppingcart
+            SELECT shoppingcart.recordID as recordID,shoppingcart.ownerID as ownerID,
+            amount,name,itemtypes.typeName as typename,price,
+            shoppingcart.productID as productID,
+            (SELECT full_name FROM persons WHERE personID = ownerID) as ownerName
+            FROM shoppingcart
             INNER JOIN webshopproducts
             ON shoppingcart.productID = webshopproducts.productID
             INNER JOIN itemtypes
@@ -24,6 +28,8 @@ else {
     $total = 0;
     while($row = mysqli_fetch_array($query)) {
          $cartProduct = array(
+             "ownerID" => $row["ownerID"],
+             "ownerName" => $row["ownerName"],
              "recordID" => $row["recordID"],
              "productID" => htmlspecialchars($row['productID']),
              "name" => $row['name'],
@@ -35,7 +41,7 @@ else {
          $total = $total + $cartProduct["total"];
          array_push($cartProducts, $cartProduct);
     }
-
+    
     $result["products"] = $cartProducts;
     $result["total"] = $total;
 }

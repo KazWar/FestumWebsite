@@ -41,7 +41,7 @@ include_once('../components/header.php');?>
             <hr>
             <div class="input_fields_wrap">
                 Add other people to your campingsite reservation :<button class="btn-sm btn-info add_field_button">+</button>
-                <div><input type="text" name="mytext[]"></div>
+                <div><input type="text" name="addPersonToReservation"></div>
             </div>
             <hr>
             <button type="submit">Proceed to checkout</button>

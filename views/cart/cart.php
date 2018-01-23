@@ -13,7 +13,6 @@ function ScriptsAndStyles(){ ?>
     <h2>You are not logged in.</h2>
 </div>
 
-
 <div id="Cart" class="container bg-faded my-3" style="display: none;">
     <table id="CartTable" class="table table-hover table-condensed">
         <thead>
@@ -39,6 +38,7 @@ function ScriptsAndStyles(){ ?>
                 <div class='col-sm-2 hidden-xs'><img src='http://placehold.it/100x100' alt='...' class='img-responsive'/></div>
                 <div class='col-sm-10'>
                     <h4 class='nomargin'>${name}</h4>
+                    <h5>${ownerName}</h5>
                 </div>
             </div>
         </td>
@@ -61,8 +61,12 @@ function ScriptsAndStyles(){ ?>
         </tr>
         <tr class='visible-xs'>
             <td class='text-center'><strong>Total price &#8364;${total}</strong></td>
-            <td colspan='3' class='text-right' style="display:none" id="campingSelector">
-                <strong>Add camping reservation?</strong> 
+            <td colspan='4' class='text-right' style="display:none" id="campingSelector">
+                <label>
+                    <strong>camping reservation?</strong>
+                </label>
+            </td>
+            <td>
                 <input class="form-check-input" type="checkbox" value="yes" id="cbCampingReservation">
             </td>
         </tr>

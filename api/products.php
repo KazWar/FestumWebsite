@@ -7,10 +7,10 @@ header('Content-Type: application/json');
 $products = array();
 if (isset($_GET["type"])) {
     $productType = $_GET["type"];
-    $result = mysqli_query($con, "SELECT * FROM webshopproducts where type = $productType");
+    $result = mysqli_query($con, "SELECT * FROM webshopproducts where type = $productType && type != 4");
 }
 else {
-    $result = mysqli_query($con,"SELECT * FROM webshopproducts");    
+    $result = mysqli_query($con,"SELECT * FROM webshopproducts WHERE type != 4");    
 }
 
 while($row = mysqli_fetch_array($result)) {
