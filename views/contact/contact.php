@@ -43,15 +43,10 @@ include_once('../components/header.php');?>
       <strong>Form</strong>
     </h2>
     <hr class="divider">
-    <form id="contactForm" action="MailContactForm()" method="post">
       <div class="row">
         <div class="form-group col-lg-4">
           <label class="text-heading">Name</label>
           <input id="name" type="text" class="form-control">
-        </div>
-        <div class="form-group col-lg-4">
-          <label class="text-heading">Email Address</label>
-          <input id="email" type="email" class="form-control">
         </div>
         <div class="form-group col-lg-4">
           <label class="text-heading">Phone Number</label>
@@ -67,10 +62,9 @@ include_once('../components/header.php');?>
           <textarea id="emailBody" class="form-control" rows="6"></textarea>
         </div>
         <div class="form-group col-lg-12">
-          <button type="submit" class="btn btn-secondary">Submit</button>
+          <button onclick="MailContactForm()" class="btn btn-secondary">Submit</button>
         </div>
       </div>
-    </form>
   </div>
 </div>
 

@@ -4,8 +4,9 @@ function MailContactForm() {
   let subject = document.querySelector('#emailSubject').value;
   let message = document.querySelector('#emailBody').value;
   
-  let body = `Name: ${name}<br>` + 
-             `E-mail: ${email}<br>`;
+  let body = `Name: ${name}<br>`+ 
+             `PhoneNumber: ${phoneNumber}<br>`; + 
+             `Message: ${message}<br>`;
   let form = new FormData();
   
   form.set("subject", `Contact request from ${name}, regarding ${subject}`);
